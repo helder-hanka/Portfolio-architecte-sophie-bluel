@@ -43,3 +43,18 @@ const generateCategries = (categories) => {
     divElement.appendChild(h2Element);
   }
 };
+
+const generateBtn = (worksData) => {
+  //even.target.accessKey
+  const btnFilter = document.querySelectorAll(".works-filter div");
+  for (let i = 0, r = btnFilter.length; i < r; i++) {
+    const element = btnFilter[i];
+    element.addEventListener("click", (even) => {
+      const worksFilter = worksData.filter(
+        (work) => work.category.id === even.target.accessKey
+      );
+      document.querySelector(".gallery").innerHTML = "";
+      generateworks(worksFilter);
+    });
+  }
+};
