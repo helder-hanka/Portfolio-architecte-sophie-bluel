@@ -1,4 +1,4 @@
-import { worksFetch } from "./config.js";
+import { worksFetch, categoriesFetch } from "./config.js";
 
 export const displayworksData = async () => {
   try {
