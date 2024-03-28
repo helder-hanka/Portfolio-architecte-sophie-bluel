@@ -275,12 +275,11 @@ footer nav ul {
   gap: 10px;
 }
 
-.works-filter div {
+.works-filter button {
   border: 1px solid var(--green-color);
   border-radius: 50px;
   padding: 9px 30px;
-}
-
-.works-filter h2 {
   font-size: 16px;
+  color: var(--green-color);
+  background-color: white;
 }
