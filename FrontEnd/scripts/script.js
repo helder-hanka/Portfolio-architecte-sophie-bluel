@@ -37,6 +37,7 @@ const generateCategries = (categories) => {
 
     const divWorksFilters = document.querySelector(".works-filter");
     const divElement = document.createElement("div");
+    divElement.accessKey = element.id;
     const h2Element = document.createElement("h2");
     h2Element.innerText = element.name;
 
