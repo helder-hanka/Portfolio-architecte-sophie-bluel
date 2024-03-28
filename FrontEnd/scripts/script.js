@@ -8,6 +8,7 @@ export const displayworksData = async () => {
     generateworks(worksData);
     document.querySelector(".works-filter").innerHTML = "";
     generateCategries(categories);
+    generateBtn(worksData);
   } catch (error) {
     console.error(error);
   }
