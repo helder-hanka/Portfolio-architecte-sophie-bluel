@@ -3,8 +3,11 @@ import { worksFetch, categoriesFetch } from "./config.js";
 export const displayworksData = async () => {
   try {
     const worksData = await worksFetch();
+    const categories = await categoriesFetch();
     document.querySelector(".gallery").innerHTML = "";
     generateworks(worksData);
+    document.querySelector(".works-filter").innerHTML = "";
+    generateCategries(categories);
   } catch (error) {
     console.error(error);
   }
@@ -31,7 +34,7 @@ const generateCategries = (categories) => {
   for (let i = 0, r = categories.length; i < r; i++) {
     const element = categories[i];
 
-    const divWorksFilters = document.querySelector(".Works-filter");
+    const divWorksFilters = document.querySelector(".works-filter");
     const divElement = document.createElement("div");
     const h2Element = document.createElement("h2");
     h2Element.innerText = element.name;
