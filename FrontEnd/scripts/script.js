@@ -26,3 +26,16 @@ const generateworks = (elementsArr) => {
     figureElement.appendChild(figcaptionElement);
   }
 };
+
+const generateCategries = (categories) => {
+  for (let i = 0, r = categories.length; i < r; i++) {
+    const element = categories[i];
+
+    const divWorksFilters = document.querySelector(".Works-filter");
+    const divElement = document.createElement("div");
+    const h2Element = document.createElement("h2");
+
+    divWorksFilters.appendChild(divElement);
+    divElement.appendChild(h2Element);
+  }
+};
