@@ -1,3 +1,15 @@
+body {
+  background-color: #fffef8;
+  max-width: 100%;
+}
 nav li:nth-child(3) {
   font-weight: 900;
+}
+#login a {
+  text-align: center;
+  color: black;
+}
+footer {
+  background-color: white;
+  height: 60px;
 }
