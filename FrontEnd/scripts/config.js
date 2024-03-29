@@ -15,3 +15,12 @@ export const categoriesFetch = async () => {
     return console.log(error);
   }
 };
+
+export const loginFetch = async () => {
+  try {
+    const res = await fetch("http://localhost:5678/api/users/login");
+    return res.json();
+  } catch (error) {
+    return error;
+  }
+};
