@@ -11,7 +11,7 @@ export const displayworksData = async () => {
     const btnElement = document.createElement("button");
     btnElement.innerText = "Tous";
     divWorksFilters.appendChild(btnElement);
-    generateCategries(categories);
+    generateCategories(categories);
     generateBtn(worksData);
   } catch (error) {
     console.log(error);
@@ -35,7 +35,7 @@ const generateworks = (elementsArr) => {
   }
 };
 
-const generateCategries = (categories) => {
+const generateCategories = (categories) => {
   for (let i = 0, r = categories.length; i < r; i++) {
     const element = categories[i];
 
