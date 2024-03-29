@@ -16,9 +16,17 @@ export const categoriesFetch = async () => {
   }
 };
 
-export const loginFetch = async () => {
+export const loginFetch = async (email, password) => {
+  const form = {
+    email,
+    password,
+  };
   try {
-    const res = await fetch("http://localhost:5678/api/users/login");
+    const res = await fetch("http://localhost:5678/api/users/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      bady: form,
+    });
     return res.json();
   } catch (error) {
     return error;
