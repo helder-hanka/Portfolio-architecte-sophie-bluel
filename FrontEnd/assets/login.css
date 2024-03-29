@@ -2,6 +2,10 @@ body {
   background-color: #fffef8;
   max-width: 100%;
 }
+body div {
+  max-width: 1140px;
+  margin: auto;
+}
 nav li:nth-child(3) {
   font-weight: 900;
 }
