@@ -6,11 +6,15 @@ export const displayworksData = async () => {
     const categories = await categoriesFetch();
     document.querySelector(".gallery").innerHTML = "";
     generateworks(worksData);
-    document.querySelector(".works-filter").innerHTML = "";
+    const divWorksFilters = document.querySelector(".works-filter");
+    divWorksFilters.innerHTML = "";
+    const btnElement = document.createElement("button");
+    btnElement.innerText = "Tous";
+    divWorksFilters.appendChild(btnElement);
     generateCategries(categories);
     generateBtn(worksData);
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 };
 
@@ -37,26 +41,30 @@ const generateCategries = (categories) => {
 
     const divWorksFilters = document.querySelector(".works-filter");
     const divElement = document.createElement("div");
-    divElement.accessKey = element.id;
-    const h2Element = document.createElement("h2");
-    h2Element.innerText = element.name;
-
+    const btnElement = document.createElement("button");
+    btnElement.innerText = element.name;
+    btnElement.accessKey = element.id;
     divWorksFilters.appendChild(divElement);
-    divElement.appendChild(h2Element);
+    divElement.appendChild(btnElement);
   }
 };
 
 const generateBtn = (worksData) => {
-  //even.target.accessKey
-  const btnFilter = document.querySelectorAll(".works-filter div");
+  const btnFilter = document.querySelectorAll(".works-filter button");
   for (let i = 0, r = btnFilter.length; i < r; i++) {
     const element = btnFilter[i];
     element.addEventListener("click", (even) => {
-      const worksFilter = worksData.filter(
-        (work) => work.category.id === even.target.accessKey
-      );
-      document.querySelector(".gallery").innerHTML = "";
-      generateworks(worksFilter);
+      const accessKey = even.target.accessKey;
+      if (accessKey) {
+        const worksFilter = worksData.filter((work) => {
+          return work.category.id === Number(accessKey);
+        });
+        document.querySelector(".gallery").innerHTML = "";
+        generateworks(worksFilter);
+      } else {
+        document.querySelector(".gallery").innerHTML = "";
+        generateworks(worksData);
+      }
     });
   }
 };
