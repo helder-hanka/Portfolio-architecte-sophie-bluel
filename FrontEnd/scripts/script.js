@@ -124,4 +124,5 @@ const displayErrorMessage = (msg) => {
   const classLoginForm = document.querySelector(".loginForm");
   const tagSpan = document.createElement("span");
   tagSpan.innerText = msg;
+  tagSpan.classList.add("errorMessage");
 };
