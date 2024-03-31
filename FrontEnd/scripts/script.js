@@ -4,15 +4,17 @@ export const displayworksData = async () => {
   try {
     const worksData = await worksFetch();
     const categories = await categoriesFetch();
-    document.querySelector(".gallery").innerHTML = "";
-    generateworks(worksData);
-    const divWorksFilters = document.querySelector(".works-filter");
-    divWorksFilters.innerHTML = "";
-    const btnElement = document.createElement("button");
-    btnElement.innerText = "Tous";
-    divWorksFilters.appendChild(btnElement);
-    generateCategories(categories);
-    generateBtn(worksData);
+    if (worksData && categories) {
+      document.querySelector(".gallery").innerHTML = "";
+      generateworks(worksData);
+      const divWorksFilters = document.querySelector(".works-filter");
+      divWorksFilters.innerHTML = "";
+      const btnElement = document.createElement("button");
+      btnElement.innerText = "Tous";
+      divWorksFilters.appendChild(btnElement);
+      generateCategories(categories);
+      generateBtn(worksData);
+    }
   } catch (error) {
     console.log(error);
   }
