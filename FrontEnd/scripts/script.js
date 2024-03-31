@@ -1,4 +1,4 @@
-import { worksFetch, categoriesFetch } from "./config.js";
+import { worksFetch, categoriesFetch, loginFetch } from "./config.js";
 
 export const displayworksData = async () => {
   try {
@@ -67,4 +67,70 @@ const generateBtn = (worksData) => {
       }
     });
   }
+};
+
+export const callLoginform = () => {
+  const loginForm = document.querySelector(".loginForm");
+
+  loginForm.addEventListener("submit", async (even) => {
+    even.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    /**
+    try {
+      const res = await loginFetch(email, password);
+      console.log(messageError(res));
+      console.log("J", res.json());
+      console.log("J", await res.json().pending);
+    } catch (error) {
+      console.log("Error", error);
+    }
+
+    console.log("Res: ", res.json());
+    try {
+      const res = await loginFetch(email, password);
+      console.log("Res: ", res);
+    } catch (error) {
+      console.log("Err::: ", error);
+    }
+ */
+    try {
+      validateEmail(email);
+      const res = await loginFetch(email, password);
+      messageError(res);
+      const result = await res.json();
+      displayErrorMessage("");
+      localStorage.setItem("user", JSON.stringify(result));
+      window.location.href = "./index.html";
+    } catch (error) {
+      console.log("Err::: ", error);
+      displayErrorMessage(error.message);
+    }
+  });
+};
+
+const messageError = (res) => {
+  if (res.status !== 200) {
+    throw new Error(res.statusText);
+  }
+};
+
+const validateEmail = (email) => {
+  const emailRegexp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+  if (!emailRegexp.test(email)) {
+    throw new Error("L'email n'est pas valide.");
+  }
+};
+
+const displayErrorMessage = (msg) => {
+  const classLoginForm = document.querySelector(".loginForm");
+  let existingErrorMsg = document.querySelector(".errorMessage");
+  if (!existingErrorMsg) {
+    existingErrorMsg = document.createElement("span");
+    const tagBr = document.createElement("br");
+    existingErrorMsg.classList.add("errorMessage");
+    classLoginForm.insertAdjacentElement("afterend", tagBr);
+    classLoginForm.insertAdjacentElement("afterend", existingErrorMsg);
+  }
+  existingErrorMsg.innerText = msg;
 };
