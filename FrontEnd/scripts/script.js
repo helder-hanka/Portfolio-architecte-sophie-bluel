@@ -120,4 +120,6 @@ const validateEmail = (email) => {
   }
 };
 
-const displayErrorMessage = () => {};
+const displayErrorMessage = () => {
+  const classLoginForm = document.querySelector(".loginForm");
+};
