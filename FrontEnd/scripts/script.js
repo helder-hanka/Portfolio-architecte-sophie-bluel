@@ -122,7 +122,13 @@ const validateEmail = (email) => {
 
 const displayErrorMessage = (msg) => {
   const classLoginForm = document.querySelector(".loginForm");
-  const tagSpan = document.createElement("span");
-  tagSpan.innerText = msg;
-  tagSpan.classList.add("errorMessage");
+  let existingErrorMsg = document.querySelector(".errorMessage");
+  if (!existingErrorMsg) {
+    existingErrorMsg = document.createElement("span");
+    const tagBr = document.createElement("br");
+    existingErrorMsg.classList.add("errorMessage");
+    classLoginForm.insertAdjacentElement("afterend", tagBr);
+    classLoginForm.insertAdjacentElement("afterend", existingErrorMsg);
+  }
+  existingErrorMsg.innerText = msg;
 };
