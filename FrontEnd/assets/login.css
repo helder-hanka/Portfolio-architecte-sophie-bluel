@@ -24,8 +24,7 @@ main {
   padding: 150px 0;
 }
 
-#errorMessage {
+.errorMessage {
   font-size: 20px;
   color: red;
-  display: none;
 }
