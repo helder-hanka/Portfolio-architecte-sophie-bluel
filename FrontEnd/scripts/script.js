@@ -103,6 +103,7 @@ export const callLoginform = () => {
       window.location.href = "./index.js";
     } catch (error) {
       console.log("Err::: ", error);
+      displayErrorMessage(error);
     }
   });
 };
