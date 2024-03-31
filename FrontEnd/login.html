@@ -36,9 +36,14 @@
           <h2>Login</h2>
           <form class="loginForm" action="#" method="post">
             <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="email" id="email" autocomplete="email" />
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password" />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="current-password"
+            />
             <input type="submit" value="Se connecter" />
           </form>
           <a href="#">Mot de passe oublié</a>
