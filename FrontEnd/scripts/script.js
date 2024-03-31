@@ -111,3 +111,10 @@ const messageError = (res) => {
     throw new Error(`Error: ${res.statusText}, status: ${res.status}`);
   }
 };
+
+const validateEmail = (email) => {
+  const emailRegexp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+  if (!emailRegexp.test(email)) {
+    throw new Error("L'email n'est pas valide.");
+  }
+};
