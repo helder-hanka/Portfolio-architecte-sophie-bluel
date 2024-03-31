@@ -119,3 +119,5 @@ const validateEmail = (email) => {
     throw new Error("L'email n'est pas valide.");
   }
 };
+
+const displayErrorMessage = () => {};
