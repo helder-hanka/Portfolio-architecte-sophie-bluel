@@ -98,6 +98,7 @@ export const callLoginform = () => {
       const res = await loginFetch(email, password);
       messageError(res);
       const result = await res.json();
+      localStorage.setItem(result);
     } catch (error) {
       console.log("Err::: ", error);
     }
