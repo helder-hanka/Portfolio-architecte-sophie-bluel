@@ -122,4 +122,5 @@ const validateEmail = (email) => {
 
 const displayErrorMessage = () => {
   const classLoginForm = document.querySelector(".loginForm");
+  const tagSpan = document.createElement("span");
 };
