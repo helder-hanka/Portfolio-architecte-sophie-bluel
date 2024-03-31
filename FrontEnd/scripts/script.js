@@ -99,6 +99,7 @@ export const callLoginform = () => {
       messageError(res);
       const result = await res.json();
       localStorage.setItem(result);
+      window.location.href = "./index.js";
     } catch (error) {
       console.log("Err::: ", error);
     }
