@@ -99,8 +99,9 @@ export const callLoginform = () => {
       const res = await loginFetch(email, password);
       messageError(res);
       const result = await res.json();
-      localStorage.setItem(result);
-      window.location.href = "./index.js";
+      displayErrorMessage("");
+      localStorage.setItem("user", JSON.stringify(result));
+      window.location.href = "./index.html";
     } catch (error) {
       console.log("Err::: ", error);
       displayErrorMessage(error.message);
