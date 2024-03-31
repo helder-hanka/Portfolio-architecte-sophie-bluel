@@ -95,6 +95,7 @@ export const callLoginform = () => {
     }
  */
     try {
+      validateEmail(email);
       const res = await loginFetch(email, password);
       messageError(res);
       const result = await res.json();
