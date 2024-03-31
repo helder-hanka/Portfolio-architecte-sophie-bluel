@@ -110,7 +110,7 @@ export const callLoginform = () => {
 
 const messageError = (res) => {
   if (res.status !== 200) {
-    throw new Error(`Error: ${res.statusText}, status: ${res.status}`);
+    throw new Error(res.statusText);
   }
 };
 
