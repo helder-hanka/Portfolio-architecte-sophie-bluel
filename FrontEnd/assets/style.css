@@ -290,7 +290,8 @@ footer nav ul {
   color: var(--green-color);
   background-color: white;
 }
-ul a {
+
+a {
   text-decoration: none;
   color: black;
 }
