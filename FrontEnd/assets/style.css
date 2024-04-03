@@ -294,3 +294,14 @@ ul a {
   text-decoration: none;
   color: black;
 }
+.icon-title-portfolio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 31px;
+  font-size: 16px;
+}
+
+.icon-title-portfolio a i {
+  padding-right: 10px;
+}
