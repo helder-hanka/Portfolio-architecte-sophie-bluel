@@ -1,4 +1,4 @@
-import { displayworksData, callLoginform } from "./script.js";
+import { displayworksData, callLoginform, displayModal } from "./script.js";
 displayworksData();
-
 callLoginform();
+displayModal();
