@@ -306,3 +306,97 @@ a {
 .icon-title-portfolio a i {
   padding-right: 10px;
 }
+
+/** Modal**/
+
+.img-container figure {
+  width: 77px;
+  height: 103;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+}
+.img-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3px 1px;
+  font-size: 9px;
+  row-gap: 29px;
+}
+.img-container button {
+  background-color: black;
+  border-radius: 2px;
+  border: none;
+  position: absolute;
+  top: 6px;
+  right: 5px;
+}
+.img-container button i {
+  padding: 4px 0;
+}
+.img-container figure {
+  position: relative;
+}
+.vertical-line {
+  border: 1px solid #b3b3b3;
+  margin-top: 67px;
+  margin-bottom: 38px;
+}
+
+.validate-container button {
+  background-color: #1d6154;
+  border: none;
+  color: white;
+  padding: 10px 49px;
+  border-radius: 60px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.modale-container h2 {
+  padding-bottom: 46px;
+  color: black;
+  line-height: 30px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modale-container {
+  width: 630px;
+  height: 688px;
+  background-color: white;
+  margin: 10% auto;
+  border-radius: 10px;
+  overflow: auto;
+  text-align: center;
+}
+#close {
+  border: none;
+  background-color: white;
+  text-align: end;
+  font-size: 30px;
+}
+.modal-content {
+  padding-top: 10px;
+  padding-left: 105px;
+  padding-right: 105px;
+  padding-bottom: 67px;
+}
+.btn-container-close {
+  text-align: end;
+  padding-top: 26px;
+  padding-right: 30px;
+}
