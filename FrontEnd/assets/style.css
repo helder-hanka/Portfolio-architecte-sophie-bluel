@@ -352,7 +352,7 @@ a {
   font-weight: 700;
 }
 
-.modale-container h2 {
+.modal-container h2 {
   padding-bottom: 46px;
   color: black;
   line-height: 30px;
@@ -374,7 +374,7 @@ a {
   animation-name: animatetop;
   animation-duration: 0.4s;
 }
-.modale-container {
+.modal-container {
   width: 630px;
   height: 688px;
   background-color: white;
