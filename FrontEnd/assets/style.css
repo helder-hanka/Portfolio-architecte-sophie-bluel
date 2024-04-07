@@ -302,11 +302,6 @@ a {
   gap: 31px;
   font-size: 16px;
 }
-
-.icon-title-portfolio a i {
-  padding-right: 10px;
-}
-
 /** Modal**/
 
 .img-container figure {
@@ -373,6 +368,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 .modale-container {
   width: 630px;
@@ -399,4 +395,12 @@ a {
   text-align: end;
   padding-top: 26px;
   padding-right: 30px;
+}
+#openModal {
+  border: none;
+  background-color: white;
+  font-size: 14px;
+}
+#openModal i {
+  padding-right: 10px;
 }
