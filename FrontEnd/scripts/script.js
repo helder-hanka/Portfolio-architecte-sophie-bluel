@@ -73,12 +73,12 @@ const generateBtn = (worksData) => {
 
 export const callLoginform = () => {
   const loginForm = document.querySelector(".loginForm");
-
-  loginForm.addEventListener("submit", async (even) => {
-    even.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    /**
+  if (loginForm) {
+    loginForm.addEventListener("submit", async (even) => {
+      even.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      /**
     try {
       const res = await loginFetch(email, password);
       console.log(messageError(res));
@@ -95,20 +95,21 @@ export const callLoginform = () => {
     } catch (error) {
       console.log("Err::: ", error);
     }
- */
-    try {
-      validateEmail(email);
-      const res = await loginFetch(email, password);
-      messageError(res);
-      const result = await res.json();
-      displayErrorMessage("");
-      localStorage.setItem("user", JSON.stringify(result));
-      window.location.href = "./index.html";
-    } catch (error) {
-      console.log("Err::: ", error);
-      displayErrorMessage(error.message);
-    }
-  });
+    */
+      try {
+        validateEmail(email);
+        const res = await loginFetch(email, password);
+        messageError(res);
+        const result = await res.json();
+        displayErrorMessage("");
+        localStorage.setItem("user", JSON.stringify(result));
+        window.location.href = "./index.html";
+      } catch (error) {
+        console.log("Err::: ", error);
+        displayErrorMessage(error.message);
+      }
+    });
+  }
 };
 
 const messageError = (res) => {
@@ -135,4 +136,34 @@ const displayErrorMessage = (msg) => {
     classLoginForm.insertAdjacentElement("afterend", existingErrorMsg);
   }
   existingErrorMsg.innerText = msg;
+};
+
+export const displayModal = () => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnModal = document.getElementById("openModal");
+    const modal = document.querySelector(".modal");
+    const openModal = () => {
+      fetch("modal.html")
+        .then((res) => res.text())
+        .then((html) => {
+          modal.innerHTML = html;
+          const btnCloseModa = document.getElementById("close");
+          btnCloseModa.addEventListener("click", closeModal);
+          modal.style.display = "block";
+        });
+    };
+    const closeModal = () => {
+      modal.innerHTML = "";
+      modal.style.display = "none";
+    };
+
+    if (btnModal) {
+      btnModal.addEventListener("click", openModal);
+      modal.addEventListener("click", (even) => {
+        if (even.target === modal) {
+          closeModal();
+        }
+      });
+    }
+  });
 };
