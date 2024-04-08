@@ -1,4 +1,5 @@
 import { worksFetch, categoriesFetch, loginFetch } from "./config.js";
+// const jwt = require("jsonwebtoken");
 
 export const displayworksData = async () => {
   try {
@@ -68,6 +69,31 @@ const generateBtn = (worksData) => {
         generateworks(worksData);
       }
     });
+  }
+};
+
+const verifyToken = (token, secretKey) => {
+  // const tokenSecret = gwEtS = KfKfR ^ zxJP83ULiw
+  const tokenSecret = "KfKfR^zxJP83ULiw";
+  try {
+    const decoded = jwt.verify(token, tokenSecret);
+  } catch (error) {}
+};
+
+export const createBtnUpdateAddImg = () => {
+  const { userId, token } = JSON.parse(localStorage.getItem("user"));
+  console.log(userId);
+  if (userId) {
+    const buttomIconModalContainer = document.getElementById(
+      "buttom-icon-modal-container"
+    );
+    const creatBtnModal = document.createElement("button");
+    creatBtnModal.id = "openModal";
+    const createI = document.createElement("i");
+    createI.classList = "fa-regular fa-pen-to-square";
+    creatBtnModal.innerText = "modifier";
+    buttomIconModalContainer.insertAdjacentElement("beforeend", createI);
+    buttomIconModalContainer.appendChild(creatBtnModal);
   }
 };
 
