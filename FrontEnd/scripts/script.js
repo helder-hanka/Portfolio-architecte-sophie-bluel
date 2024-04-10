@@ -184,3 +184,7 @@ export const displayModal = () => {
     }
   });
 };
+
+const documentQuerySelector = (element) => {
+  return document.querySelector(element);
+};
