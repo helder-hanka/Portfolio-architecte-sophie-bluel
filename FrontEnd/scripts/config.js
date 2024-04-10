@@ -21,10 +21,13 @@ export const loginFetch = async (email, password) => {
     email,
     password,
   };
-  messageError(res);
   return await fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(form),
   });
+};
+
+export const deleteWorkFetch = async () => {
+  return await fetch(`http://localhost:5678/api//works/${id}`);
 };
