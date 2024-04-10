@@ -1,4 +1,9 @@
-import { worksFetch, categoriesFetch, loginFetch } from "./config.js";
+import {
+  worksFetch,
+  categoriesFetch,
+  loginFetch,
+  deleteWorkFetch,
+} from "./config.js";
 
 export const displayworksData = async () => {
   try {
@@ -231,4 +236,16 @@ const displayMsgError = (msg, selector) => {
     return classLoginForm;
   }
   existingErrorMsg.innerText = msg;
+};
+
+const deleteWork = async (btn, id) => {
+  try {
+    const res = deleteWorkFetch(id);
+    console.log(res);
+    messageError(res);
+    messageError("");
+    // alert()
+  } catch (error) {
+    displayMsgError(error.message, ".validate-container");
+  }
 };
