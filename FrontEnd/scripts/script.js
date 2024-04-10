@@ -189,6 +189,9 @@ export const displayModal = () => {
 const documentQuerySelector = (element) => {
   return document.querySelector(element);
 };
+const createElement = (element) => {
+  return document.createElement(element);
+};
 
 const displayModalContents = async () => {
   try {
