@@ -9,7 +9,7 @@ export const displayworksData = async () => {
       generateworks(worksData);
       const divWorksFilters = document.querySelector(".works-filter");
       divWorksFilters.innerHTML = "";
-      const btnElement = document.createElement("button");
+      const btnElement = createElement("button");
       btnElement.innerText = "Tous";
       divWorksFilters.appendChild(btnElement);
       generateCategories(categories);
@@ -25,10 +25,10 @@ const generateworks = (elementsArr) => {
     const element = elementsArr[i];
 
     const divGallery = document.querySelector(".gallery");
-    const figureElement = document.createElement("figure");
-    const imgElement = document.createElement("img");
+    const figureElement = createElement("figure");
+    const imgElement = createElement("img");
     imgElement.src = element.imageUrl;
-    const figcaptionElement = document.createElement("figcaption");
+    const figcaptionElement = createElement("figcaption");
     figcaptionElement.innerText = element.title;
 
     divGallery.appendChild(figureElement);
@@ -42,8 +42,8 @@ const generateCategories = (categories) => {
     const element = categories[i];
 
     const divWorksFilters = document.querySelector(".works-filter");
-    const divElement = document.createElement("div");
-    const btnElement = document.createElement("button");
+    const divElement = createElement("div");
+    const btnElement = createElement("button");
     btnElement.innerText = element.name;
     btnElement.accessKey = element.id;
     divWorksFilters.appendChild(divElement);
@@ -77,9 +77,9 @@ export const createBtnUpdateAddImg = () => {
     const buttomIconModalContainer = document.getElementById(
       "buttom-icon-modal-container"
     );
-    const creatBtnModal = document.createElement("button");
+    const creatBtnModal = createElement("button");
     creatBtnModal.id = "openModal";
-    const createI = document.createElement("i");
+    const createI = createElement("i");
     createI.classList = "fa-regular fa-pen-to-square";
     creatBtnModal.innerText = "modifier";
     buttomIconModalContainer.insertAdjacentElement("beforeend", createI);
@@ -146,8 +146,8 @@ const displayErrorMessage = (msg) => {
   const classLoginForm = document.querySelector(".loginForm");
   let existingErrorMsg = document.querySelector(".errorMessage");
   if (!existingErrorMsg) {
-    existingErrorMsg = document.createElement("span");
-    const tagBr = document.createElement("br");
+    existingErrorMsg = createElement("span");
+    const tagBr = createElement("br");
     existingErrorMsg.classList.add("errorMessage");
     classLoginForm.insertAdjacentElement("afterend", tagBr);
     classLoginForm.insertAdjacentElement("afterend", existingErrorMsg);
