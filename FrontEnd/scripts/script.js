@@ -200,11 +200,11 @@ const displayModalContents = async () => {
     for (let i = 0, arrl = dataWorks.length; i < arrl; i++) {
       const element = dataWorks[i];
 
-      const figureModal = document.createElement("figure");
-      const imgeModal = document.createElement("img");
-      const btnModal = document.createElement("button");
+      const figureModal = createElement("figure");
+      const imgeModal = createElement("img");
+      const btnModal = createElement("button");
       btnModal.accessKey = element.id;
-      const iModal = document.createElement("i");
+      const iModal = createElement("i");
       iModal.classList = "fa-solid fa-trash-can";
 
       imgeModal.src = element.imageUrl;
