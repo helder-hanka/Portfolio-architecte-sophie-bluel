@@ -331,6 +331,7 @@ a {
 }
 .img-container button i {
   padding: 4px 0;
+  color: white;
 }
 .img-container figure {
   position: relative;
