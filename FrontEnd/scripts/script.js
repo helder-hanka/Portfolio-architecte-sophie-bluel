@@ -212,5 +212,20 @@ const displayModalContents = async () => {
       figureModal.appendChild(btnModal);
       imgContainer.appendChild(figureModal);
     }
-  } catch (error) {}
+  } catch (error) {
+    displayMsgError(error.message, ".img-container");
+  }
+};
+
+const displayMsgError = (msg, selector) => {
+  const classLoginForm = documentQuerySelector(selector);
+  let existingErrorMsg = document.querySelector(".errorMessage");
+  if (!existingErrorMsg) {
+    existingErrorMsg = document.createElement("span");
+    existingErrorMsg.classList = "errorMessage";
+    existingErrorMsg.innerText = msg;
+    classLoginForm.appendChild(existingErrorMsg);
+    return classLoginForm;
+  }
+  existingErrorMsg.innerText = msg;
 };
