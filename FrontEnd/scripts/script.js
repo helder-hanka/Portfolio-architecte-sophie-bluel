@@ -167,6 +167,7 @@ export const displayModal = () => {
           const btnCloseModa = document.getElementById("close");
           btnCloseModa.addEventListener("click", closeModal);
           modal.style.display = "block";
+          displayModalContents();
         });
     };
     const closeModal = () => {
@@ -187,4 +188,29 @@ export const displayModal = () => {
 
 const documentQuerySelector = (element) => {
   return document.querySelector(element);
+};
+
+const displayModalContents = async () => {
+  try {
+    const dataWorks = await worksFetch();
+    const imgContainer = documentQuerySelector(".img-container");
+    for (let i = 0, arrl = dataWorks.length; i < arrl; i++) {
+      const element = dataWorks[i];
+
+      const figureModal = document.createElement("figure");
+      const imgeModal = document.createElement("img");
+      const btnModal = document.createElement("button");
+      btnModal.accessKey = element.id;
+      const iModal = document.createElement("i");
+      iModal.classList = "fa-solid fa-trash-can";
+
+      imgeModal.src = element.imageUrl;
+      imgeModal.alt = element.title;
+
+      figureModal.appendChild(imgeModal);
+      btnModal.appendChild(iModal);
+      figureModal.appendChild(btnModal);
+      imgContainer.appendChild(figureModal);
+    }
+  } catch (error) {}
 };
