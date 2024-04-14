@@ -264,6 +264,7 @@ const displayAddPhotoModal = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const btnAddImg = document.getElementById("Add-img");
     const modal = documentQuerySelector("modal");
+    const pageDeleteModalContainer = documentQuerySelector("modal-container");
     const openpageAddPhotoModal = () => {
       fetch("pageAddPhotoModal")
         .then((res) => res.text())
