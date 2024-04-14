@@ -260,4 +260,6 @@ const deleteWork = async (id) => {
   }
 };
 
-const displayAddPhotoModal = () => {};
+const displayAddPhotoModal = () => {
+  document.addEventListener("DOMContentLoaded", () => {});
+};
