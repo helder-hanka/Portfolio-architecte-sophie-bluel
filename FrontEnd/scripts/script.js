@@ -135,7 +135,13 @@ export const callLoginform = () => {
 };
 
 const messageError = (res) => {
-  if (res.status !== 200) {
+  if (!res.ok) {
+    if (res.status === 401) {
+      localStorage.clear("user");
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 3000);
+    }
     throw new Error(res.statusText);
   }
 };
@@ -241,11 +247,14 @@ const displayMsgError = (msg, selector) => {
 
 const deleteWork = async (id) => {
   const { token } = JSON.parse(localStorage.getItem("user"));
+  const modal = document.querySelector(".modal");
+  const imgContainer = documentQuerySelector(".img-container");
   try {
     const res = await deleteWorkFetch(id, token);
-    messageError(res);
-    messageError("");
+    displayMsgError("", ".validate-container");
     alert("Photo supprimé");
+    imgContainer.innerHTML = "";
+    displayModalContents();
   } catch (error) {
     displayMsgError(error.message, ".validate-container");
   }
