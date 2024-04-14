@@ -219,6 +219,7 @@ const displayModalContents = async () => {
       btnModal.appendChild(iModal);
       figureModal.appendChild(btnModal);
       imgContainer.appendChild(figureModal);
+      btnModal.addEventListener("click", () => deleteWork(element.id));
     }
   } catch (error) {
     displayMsgError(error.message, ".img-container");
@@ -238,13 +239,13 @@ const displayMsgError = (msg, selector) => {
   existingErrorMsg.innerText = msg;
 };
 
-const deleteWork = async (btn, id) => {
+const deleteWork = async (id) => {
+  const { token } = JSON.parse(localStorage.getItem("user"));
   try {
-    const res = deleteWorkFetch(id);
-    console.log(res);
+    const res = await deleteWorkFetch(id, token);
     messageError(res);
     messageError("");
-    // alert()
+    alert("Photo supprimé");
   } catch (error) {
     displayMsgError(error.message, ".validate-container");
   }
