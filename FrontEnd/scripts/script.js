@@ -259,3 +259,5 @@ const deleteWork = async (id) => {
     displayMsgError(error.message, ".validate-container");
   }
 };
+
+const displayAddPhotoModal = () => {};
