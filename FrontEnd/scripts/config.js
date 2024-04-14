@@ -28,6 +28,11 @@ export const loginFetch = async (email, password) => {
   });
 };
 
-export const deleteWorkFetch = async () => {
-  return await fetch(`http://localhost:5678/api//works/${id}`);
+export const deleteWorkFetch = async (id, token) => {
+  return await fetch(`http://localhost:5678/api/works/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
