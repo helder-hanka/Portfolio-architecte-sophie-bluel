@@ -200,6 +200,9 @@ export const displayModal = () => {
 const documentQuerySelector = (element) => {
   return document.querySelector(element);
 };
+const documentGetElementById = (element) => {
+  return documentGetElementById(element);
+};
 const createElement = (element) => {
   return document.createElement(element);
 };
