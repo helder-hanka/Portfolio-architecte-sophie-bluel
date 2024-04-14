@@ -261,5 +261,7 @@ const deleteWork = async (id) => {
 };
 
 const displayAddPhotoModal = () => {
-  document.addEventListener("DOMContentLoaded", () => {});
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnAddImg = document.getElementById("Add-img");
+  });
 };
