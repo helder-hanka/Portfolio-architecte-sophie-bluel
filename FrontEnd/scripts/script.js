@@ -271,7 +271,10 @@ const displayAddPhotoModal = () => {
     const openpageAddPhotoModal = () => {
       fetch("pageAddPhotoModal")
         .then((res) => res.text())
-        .then((html) => {});
+        .then((html) => {
+          pageDeleteModalContainer.style.display = "none";
+          modal.innerHTML = html;
+        });
     };
   });
 };
