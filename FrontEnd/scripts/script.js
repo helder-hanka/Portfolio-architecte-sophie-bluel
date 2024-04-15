@@ -214,6 +214,11 @@ export const displayModal = () => {
 
           btnarrowLeft.addEventListener("click", openModal);
           galleriesContainer.innerHTML = html;
+
+          const form = documentQuerySelector(".AddImgForm");
+          form.addEventListener("submit", (event) => {
+            event.preventDefault();
+          });
         });
     };
     const closeModal = () => {
