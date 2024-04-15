@@ -170,6 +170,7 @@ export const displayModal = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const btnModal = document.getElementById("openModal");
     const modal = documentQuerySelector(".modal");
+    const body = documentQuerySelector("body");
     let btnContainerClose;
     let btnAddImg;
     const openModal = () => {
@@ -177,6 +178,7 @@ export const displayModal = () => {
         .then((res) => res.text())
         .then((html) => {
           modal.innerHTML = html;
+          body.style.position = "fixed";
           btnContainerClose = documentQuerySelector(".btn-container-close");
           btnContainerClose.style.display = "block";
           const btnCloseModa = document.getElementById("close");
@@ -216,6 +218,7 @@ export const displayModal = () => {
     const closeModal = () => {
       modal.innerHTML = "";
       modal.style.display = "none";
+      body.style.position = "";
     };
     if (btnModal) {
       btnModal.addEventListener("click", openModal);
