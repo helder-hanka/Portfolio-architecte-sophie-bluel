@@ -285,6 +285,7 @@ const deleteWork = async (id) => {
   const imgContainer = documentQuerySelector(".img-container");
   try {
     const res = await deleteWorkFetch(id, token);
+    messageError(res);
     displayMsgError("", ".validate-container");
     alert("Photo supprimé");
     imgContainer.innerHTML = "";
