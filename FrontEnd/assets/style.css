@@ -399,6 +399,7 @@ a {
 .btn-container-close {
   text-align: end;
   padding-top: 26px;
+  padding-left: 30px;
   padding-right: 30px;
 }
 #openModal {
