@@ -170,13 +170,14 @@ export const displayModal = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const btnModal = document.getElementById("openModal");
     const modal = documentQuerySelector(".modal");
-    const btnContainerClose = documentQuerySelector(".btn-container-close");
+    let btnContainerClose;
     let btnAddImg;
     const openModal = () => {
       fetch("modal.html")
         .then((res) => res.text())
         .then((html) => {
           modal.innerHTML = html;
+          btnContainerClose = documentQuerySelector(".btn-container-close");
           btnContainerClose.style.display = "block";
           const btnCloseModa = document.getElementById("close");
           btnCloseModa.addEventListener("click", closeModal);
@@ -194,11 +195,10 @@ export const displayModal = () => {
         .then((res) => res.text())
         .then((html) => {
           btnAddImg.style.display = "none";
-          validateContainer.style.display = "flex";
+          btnContainerClose.style.display = "flex";
           const btnarrowLeft = createElement("button");
           const iElement = createElement("i");
           const btnValidate = createElement("button");
-
           btnarrowLeft.id = "btnarrow-left";
           iElement.classList = "fa-solid fa-arrow-left";
           btnValidate.innerText = "Valider";
@@ -217,7 +217,6 @@ export const displayModal = () => {
       modal.innerHTML = "";
       modal.style.display = "none";
     };
-
     if (btnModal) {
       btnModal.addEventListener("click", openModal);
       modal.addEventListener("click", (even) => {
