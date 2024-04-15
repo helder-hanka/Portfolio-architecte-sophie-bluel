@@ -233,7 +233,8 @@ li:hover {
   margin-bottom: 20px;
 }
 #contact form,
-#login form {
+#login form,
+.AddImgForm {
   text-align: left;
   margin-top: 30px;
   display: flex;
@@ -241,7 +242,9 @@ li:hover {
 }
 
 #contact input,
-#login input {
+#login input,
+.AddImgForm input,
+.AddImgForm select {
   height: 50px;
   font-size: 1.2em;
   border: none;
