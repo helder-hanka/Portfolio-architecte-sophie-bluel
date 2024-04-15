@@ -77,8 +77,8 @@ const generateBtn = (worksData) => {
 };
 
 export const createBtnUpdateAddImg = () => {
-  const { userId, token } = JSON.parse(localStorage.getItem("user"));
-  if (userId) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (user && user.userId) {
     const buttomIconModalContainer = document.getElementById(
       "buttom-icon-modal-container"
     );
