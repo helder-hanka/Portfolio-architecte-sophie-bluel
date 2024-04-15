@@ -1,0 +1,11 @@
+#btnarrow-left {
+  border: none;
+  background-color: white;
+  font-size: 30px;
+}
+.btn-container-close {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
