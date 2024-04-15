@@ -7,3 +7,57 @@
   display: flex;
   justify-content: space-between;
 }
+
+.add-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8f1f6;
+  border-radius: 3px;
+  width: 420px;
+  height: 169px;
+}
+
+.add-img i {
+  font-size: 60px;
+  color: #cbd6dc;
+}
+.add-img button {
+  border: none;
+  border-radius: 50px;
+  color: #306685;
+  background-color: #cbd6dc;
+  padding: 10px 33px;
+  margin: 6px 0;
+  font-size: 16px;
+}
+.add-img p {
+  font-size: 13px;
+}
+
+.vertical-line {
+  margin-top: 47px;
+}
+.modal-content {
+  padding-bottom: 0;
+}
+
+.AddImgForm label {
+  margin: 1em 0 1em 0;
+}
+.AddImgForm input,
+select {
+  padding: 0 16px;
+}
+.AddImgForm {
+  margin-top: 10px;
+}
+
+.Add-page h2 {
+  padding-bottom: 36px;
+}
+#validate {
+  background-color: #a7a7a7;
+  padding: 10px 100px;
+}
