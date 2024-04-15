@@ -36,3 +36,12 @@ export const deleteWorkFetch = async (id, token) => {
     },
   });
 };
+export const postWorkFetch = async (bodyData, token) => {
+  return await fetch(`http://localhost:5678/api/works`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(bodyData),
+  });
+};
