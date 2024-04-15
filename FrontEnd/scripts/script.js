@@ -3,6 +3,7 @@ import {
   categoriesFetch,
   loginFetch,
   deleteWorkFetch,
+  postWorkFetch,
 } from "./config.js";
 
 export const displayworksData = async () => {
