@@ -169,16 +169,48 @@ const displayErrorMessage = (msg) => {
 export const displayModal = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const btnModal = document.getElementById("openModal");
-    const modal = document.querySelector(".modal");
+    const modal = documentQuerySelector(".modal");
+    const btnContainerClose = documentQuerySelector(".btn-container-close");
+    let btnAddImg;
     const openModal = () => {
       fetch("modal.html")
         .then((res) => res.text())
         .then((html) => {
           modal.innerHTML = html;
+          btnContainerClose.style.display = "block";
           const btnCloseModa = document.getElementById("close");
           btnCloseModa.addEventListener("click", closeModal);
           modal.style.display = "block";
           displayModalContents();
+          btnAddImg = document.getElementById("add-img");
+          btnAddImg.addEventListener("click", openpageAddPhotoModal);
+        });
+    };
+
+    const openpageAddPhotoModal = () => {
+      const galleriesContainer = documentQuerySelector(".galleries-container");
+      const validateContainer = documentQuerySelector(".validate-container");
+      fetch("pageAddPhotoModal.html")
+        .then((res) => res.text())
+        .then((html) => {
+          btnAddImg.style.display = "none";
+          validateContainer.style.display = "flex";
+          const btnarrowLeft = createElement("button");
+          const iElement = createElement("i");
+          const btnValidate = createElement("button");
+
+          btnarrowLeft.id = "btnarrow-left";
+          iElement.classList = "fa-solid fa-arrow-left";
+          btnValidate.innerText = "Valider";
+          btnValidate.id = "validate";
+
+          btnarrowLeft.appendChild(iElement);
+          btnContainerClose.appendChild(btnarrowLeft);
+          validateContainer.appendChild(btnValidate);
+          btnContainerClose.insertAdjacentElement("afterbegin", btnarrowLeft);
+
+          btnarrowLeft.addEventListener("click", openModal);
+          galleriesContainer.innerHTML = html;
         });
     };
     const closeModal = () => {
@@ -261,20 +293,4 @@ const deleteWork = async (id) => {
   } catch (error) {
     displayMsgError(error.message, ".validate-container");
   }
-};
-
-const displayAddPhotoModal = () => {
-  document.addEventListener("DOMContentLoaded", () => {
-    const btnAddImg = document.getElementById("Add-img");
-    const modal = documentQuerySelector("modal");
-    const pageDeleteModalContainer = documentQuerySelector("modal-container");
-    const openpageAddPhotoModal = () => {
-      fetch("pageAddPhotoModal")
-        .then((res) => res.text())
-        .then((html) => {
-          pageDeleteModalContainer.style.display = "none";
-          modal.innerHTML = html;
-        });
-    };
-  });
 };
