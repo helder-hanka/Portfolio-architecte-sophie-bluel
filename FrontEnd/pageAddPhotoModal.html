@@ -1,15 +1,20 @@
 <div class="Add-page">
   <h2>Ajouter photo</h2>
-  <div class="add-img-container">
-    <i class="fa-regular fa-image"></i>
-    <button>+ Ajouter photo</button>
-    <p>jpg,png: 4mo max</p>
-  </div>
-  <label for="title">Titre</label>
-  <input type="text" name="title" id="title" />
-  <select name="category" id="category">
-    <option value="1">Objets</option>
-    <option value="2">Appartements</option>
-    <option value="3">Hotels & restaurants</option>
-  </select>
+  <form class="AddImgForm" action="#" method="post">
+    <div class="add-img-container">
+      <div class="add-img">
+        <i class="fa-regular fa-image"></i>
+        <button>+ Ajouter photo</button>
+        <p>jpg, png: 4mo max</p>
+      </div>
+    </div>
+    <label for="title">Titre</label>
+    <input type="text" name="title" id="title" />
+    <label for="category">Catégorie</label>
+    <select name="category" id="category">
+      <option value="1">Objets</option>
+      <option value="2">Appartements</option>
+      <option value="3">Hotels & restaurants</option>
+    </select>
+  </form>
 </div>
