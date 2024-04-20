@@ -160,7 +160,7 @@ export const displayModal = () => {
         .then((res) => res.text())
         .then((html) => {
           modal.innerHTML = html;
-          body.style.position = "fixed";
+          body.style.overflow = "hidden";
           btnContainerClose = documentQuerySelector(".btn-container-close");
           btnContainerClose.style.display = "block";
           const btnCloseModa = document.getElementById("close");
@@ -199,7 +199,7 @@ export const displayModal = () => {
     const closeModal = () => {
       modal.innerHTML = "";
       modal.style.display = "none";
-      body.style.position = "";
+      body.style.overflow = "";
     };
     if (btnModal) {
       btnModal.addEventListener("click", openModal);
