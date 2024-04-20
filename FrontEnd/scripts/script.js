@@ -190,6 +190,8 @@ export const displayModal = () => {
           btnarrowLeft.addEventListener("click", openModal);
           modalContent.innerHTML = html;
 
+          onChangeAddForm();
+
           const form = documentQuerySelector(".AddImgForm");
           form.addEventListener("submit", (event) => {
             event.preventDefault();
@@ -293,4 +295,18 @@ const ValidateInput = (value) => {
   if (value.length < 3) {
     throw new Error(`${value}: est trop court! `);
   }
+};
+
+const onChangeAddForm = () => {
+  const btnValidate = documentQuerySelector(".AddImgForm #validate");
+  const inputTitle = documentQuerySelector(".AddImgForm #title");
+  inputTitle.addEventListener("change", (event) => {
+    try {
+      ValidateInput(event.target.value);
+      btnValidate.disabled = false;
+    } catch (error) {
+      btnValidate.disabled = true;
+      displayMsgError(error.message, ".validate-container");
+    }
+  });
 };
