@@ -173,7 +173,7 @@ export const displayModal = () => {
     const modal = documentQuerySelector(".modal");
     const body = documentQuerySelector("body");
     let btnContainerClose;
-    let btnAddImg;
+    // let btnAddImg;
     const openModal = () => {
       fetch("modal.html")
         .then((res) => res.text())
@@ -186,34 +186,28 @@ export const displayModal = () => {
           btnCloseModa.addEventListener("click", closeModal);
           modal.style.display = "block";
           displayModalContents();
-          btnAddImg = document.getElementById("add-img");
+          const btnAddImg = document.getElementById("add-img");
           btnAddImg.addEventListener("click", openpageAddPhotoModal);
         });
     };
 
     const openpageAddPhotoModal = () => {
-      const galleriesContainer = documentQuerySelector(".galleries-container");
-      const validateContainer = documentQuerySelector(".validate-container");
+      const modalContent = documentQuerySelector(".modal-content");
       fetch("pageAddPhotoModal.html")
         .then((res) => res.text())
         .then((html) => {
-          btnAddImg.style.display = "none";
           btnContainerClose.style.display = "flex";
           const btnarrowLeft = createElement("button");
           const iElement = createElement("i");
-          const btnValidate = createElement("button");
           btnarrowLeft.id = "btnarrow-left";
           iElement.classList = "fa-solid fa-arrow-left";
-          btnValidate.innerText = "Valider";
-          btnValidate.id = "validate";
 
           btnarrowLeft.appendChild(iElement);
           btnContainerClose.appendChild(btnarrowLeft);
-          validateContainer.appendChild(btnValidate);
           btnContainerClose.insertAdjacentElement("afterbegin", btnarrowLeft);
 
           btnarrowLeft.addEventListener("click", openModal);
-          galleriesContainer.innerHTML = html;
+          modalContent.innerHTML = html;
 
           const form = documentQuerySelector(".AddImgForm");
           form.addEventListener("submit", (event) => {
