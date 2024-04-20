@@ -288,3 +288,9 @@ const manageForm = () => {
     console.log(error);
   }
 };
+
+const ValidateInput = (value) => {
+  if (value.length < 3) {
+    throw new Error(`${value}: est trop court! `);
+  }
+};
