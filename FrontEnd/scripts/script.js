@@ -100,24 +100,6 @@ export const callLoginform = () => {
       even.preventDefault();
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
-      /**
-    try {
-      const res = await loginFetch(email, password);
-      console.log(messageError(res));
-      console.log("J", res.json());
-      console.log("J", await res.json().pending);
-    } catch (error) {
-      console.log("Error", error);
-    }
-
-    console.log("Res: ", res.json());
-    try {
-      const res = await loginFetch(email, password);
-      console.log("Res: ", res);
-    } catch (error) {
-      console.log("Err::: ", error);
-    }
-    */
       try {
         validateEmail(email);
         const res = await loginFetch(email, password);
