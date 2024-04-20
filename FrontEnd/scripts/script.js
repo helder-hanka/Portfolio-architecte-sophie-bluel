@@ -193,6 +193,7 @@ export const displayModal = () => {
           const form = documentQuerySelector(".AddImgForm");
           form.addEventListener("submit", (event) => {
             event.preventDefault();
+            manageForm();
           });
         });
     };
@@ -276,5 +277,14 @@ const deleteWork = async (id) => {
     displayModalContents();
   } catch (error) {
     displayMsgError(error.message, ".validate-container");
+  }
+};
+
+const manageForm = () => {
+  try {
+    const title = documentQuerySelector(".AddImgForm input").value;
+    const select = documentQuerySelector(".AddImgForm select").value;
+  } catch (error) {
+    console.log(error);
   }
 };
