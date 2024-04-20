@@ -7,23 +7,34 @@
   display: flex;
   justify-content: space-between;
 }
-
-.add-img {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.add-img-container {
   background-color: #e8f1f6;
   border-radius: 3px;
   width: 420px;
   height: 169px;
+  display: flex;
+  justify-content: center;
+}
+.icon-btn-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.add-img {
+  width: 129px;
+  display: none;
+}
+.add-img img {
+  width: 100%;
+  height: 100%;
 }
 
-.add-img i {
+.icon-btn-add i {
   font-size: 60px;
   color: #cbd6dc;
 }
-.add-img button {
+.icon-btn-add button {
   border: none;
   border-radius: 50px;
   color: #306685;
@@ -32,7 +43,7 @@
   margin: 6px 0;
   font-size: 16px;
 }
-.add-img p {
+.icon-btn-add p {
   font-size: 13px;
 }
 
@@ -60,4 +71,17 @@ select {
 #validate {
   background-color: #a7a7a7;
   padding: 10px 100px;
+}
+.AddImgForm .validate-container {
+  text-align: center;
+}
+
+.AddImgForm select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
 }
