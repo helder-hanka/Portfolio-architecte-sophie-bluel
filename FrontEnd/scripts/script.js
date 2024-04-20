@@ -173,7 +173,6 @@ export const displayModal = () => {
     const modal = documentQuerySelector(".modal");
     const body = documentQuerySelector("body");
     let btnContainerClose;
-    // let btnAddImg;
     const openModal = () => {
       fetch("modal.html")
         .then((res) => res.text())
