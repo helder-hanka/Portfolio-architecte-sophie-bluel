@@ -322,7 +322,7 @@ const validateImg = (event) => {
   if (!imageType.some((imgT) => imgT === file.type)) {
     throw new Error(`${file.type}: n'est pas valide`);
   }
-  console.log(file);
+  vérifyFileSize(file.size);
   const reader = new FileReader();
   reader.onload = function (e) {
     const preview = document.getElementById("preview-img");
@@ -339,4 +339,12 @@ const validateImg = (event) => {
     preview.appendChild(img);
   };
   reader.readAsDataURL(file);
+};
+
+const vérifyFileSize = (size) => {
+  const maxSize = 4 * 1024 * 1024;
+
+  if (size > maxSize) {
+    throw new Error("La taille du fichier est trop grande !");
+  }
 };
