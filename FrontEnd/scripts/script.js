@@ -299,14 +299,44 @@ const ValidateInput = (value) => {
 
 const onChangeAddForm = () => {
   const btnValidate = documentQuerySelector(".AddImgForm #validate");
-  const inputTitle = documentQuerySelector(".AddImgForm #title");
-  inputTitle.addEventListener("change", (event) => {
-    try {
-      ValidateInput(event.target.value);
-      btnValidate.disabled = false;
-    } catch (error) {
-      btnValidate.disabled = true;
-      displayMsgError(error.message, ".validate-container");
-    }
+  const inputs = document.querySelectorAll(".AddImgForm input");
+  inputs.forEach((input) => {
+    input.addEventListener("change", (event) => {
+      try {
+        ValidateInput(event.target.value);
+        if (event.target.name === "imgBtn") {
+          validateImg(event);
+        }
+        btnValidate.disabled = false;
+      } catch (error) {
+        btnValidate.disabled = true;
+        displayMsgError(error.message, ".validate-container");
+      }
+    });
   });
+};
+
+const validateImg = (event) => {
+  const file = event.target.files[0];
+  const imageType = ["image/jpeg", "image/png"];
+  if (!imageType.some((imgT) => imgT === file.type)) {
+    throw new Error(`${file.type}: n'est pas valide`);
+  }
+  console.log(file);
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const preview = document.getElementById("preview-img");
+    const iconBtnAdd = document.querySelector(".icon-btn-add");
+    document.querySelector(".icon-btn-add i").style.display = "none";
+    document.querySelector(".icon-btn-add p").style.display = "none";
+    document.querySelector(".icon-btn-add label").style.height = "100%";
+    preview.style.display = "block";
+    iconBtnAdd.style.opacity = "0";
+
+    const img = document.createElement("img");
+    img.src = e.target.result;
+    img.alt = file.name;
+    preview.appendChild(img);
+  };
+  reader.readAsDataURL(file);
 };
