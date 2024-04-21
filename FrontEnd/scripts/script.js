@@ -300,20 +300,54 @@ const ValidateInput = (value) => {
 const onChangeAddForm = () => {
   const btnValidate = documentQuerySelector(".AddImgForm #validate");
   const inputs = document.querySelectorAll(".AddImgForm input");
-  inputs.forEach((input) => {
-    input.addEventListener("change", (event) => {
-      try {
-        ValidateInput(event.target.value);
-        if (event.target.name === "imgBtn") {
-          validateImg(event);
-        }
-        btnValidate.disabled = false;
-      } catch (error) {
-        btnValidate.disabled = true;
-        displayMsgError(error.message, ".validate-container");
-      }
-    });
+  const imgInput = document.querySelector(".AddImgForm input[name='imgBtn']");
+  const titleInput = document.querySelector(".AddImgForm input[name='title']");
+  const categorySelect = document.getElementById("category");
+
+  imgInput.addEventListener("change", (event) => {
+    try {
+      validateImg(event);
+      isValidInputsElements();
+    } catch (error) {
+      isErrorInputsElements(error);
+    }
   });
+  categorySelect.addEventListener("change", () => {
+    try {
+      isValidInputsElements();
+    } catch (error) {
+      isErrorInputsElements(error);
+    }
+  });
+
+  titleInput.addEventListener("keydown", () => {
+    try {
+      isValidInputsElements();
+    } catch (error) {
+      isErrorInputsElements(error);
+    }
+  });
+  titleInput.addEventListener("change", () => {
+    try {
+      isValidInputsElements();
+    } catch (error) {
+      isErrorInputsElements(error);
+    }
+  });
+
+  const isValidInputsElements = () => {
+    validateForm();
+
+    btnValidate.disabled = !validateForm();
+    btnValidate.style.backgroundColor = "#1d6154";
+    displayMsgError("", ".validate-container");
+  };
+
+  const isErrorInputsElements = (error) => {
+    btnValidate.disabled = true;
+    btnValidate.style.backgroundColor = "";
+    displayMsgError(error.message, ".validate-container");
+  };
 };
 
 const validateImg = (event) => {
@@ -348,3 +382,23 @@ const vérifyFileSize = (size) => {
     throw new Error("La taille du fichier est trop grande !");
   }
 };
+
+function validateForm() {
+  const titleInput = document.querySelector(".AddImgForm input[name='title']");
+  const categorySelect = document.getElementById("category");
+  const imgInput = document.querySelector(".AddImgForm input[name='imgBtn']");
+
+  if (titleInput.value.trim().length < 3) {
+    throw new Error("Le champ titre ne peut pas être vide");
+  }
+
+  if (categorySelect.value === "") {
+    throw new Error("Veuillez sélectionner une catégorie");
+  }
+  console.log(imgInput.files.length);
+  if (!imgInput.files.length) {
+    throw new Error("Veuillez sélectionner une une image");
+  }
+
+  return true;
+}
