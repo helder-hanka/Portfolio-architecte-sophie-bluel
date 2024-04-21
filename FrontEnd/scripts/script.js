@@ -268,7 +268,6 @@ const displayMsgError = (msg, selector) => {
 
 const deleteWork = async (id) => {
   const { token } = JSON.parse(localStorage.getItem("user"));
-  const modal = document.querySelector(".modal");
   const imgContainer = documentQuerySelector(".img-container");
   try {
     const res = await deleteWorkFetch(id, token);
