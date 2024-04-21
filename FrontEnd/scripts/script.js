@@ -299,7 +299,6 @@ const ValidateInput = (value) => {
 
 const onChangeAddForm = () => {
   const btnValidate = documentQuerySelector(".AddImgForm #validate");
-  const inputs = document.querySelectorAll(".AddImgForm input");
   const imgInput = document.querySelector(".AddImgForm input[name='imgBtn']");
   const titleInput = document.querySelector(".AddImgForm input[name='title']");
   const categorySelect = document.getElementById("category");
