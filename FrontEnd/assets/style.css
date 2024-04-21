@@ -293,6 +293,10 @@ footer nav ul {
   color: var(--green-color);
   background-color: white;
 }
+.works-filter #category-actived {
+  background-color: var(--green-color);
+  color: white;
+}
 
 a {
   text-decoration: none;
