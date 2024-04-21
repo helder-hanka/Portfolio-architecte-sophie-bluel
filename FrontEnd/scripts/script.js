@@ -291,12 +291,6 @@ const manageForm = () => {
   }
 };
 
-const ValidateInput = (value) => {
-  if (value.length < 3) {
-    throw new Error(`${value}: est trop court! `);
-  }
-};
-
 const onChangeAddForm = () => {
   const btnValidate = documentQuerySelector(".AddImgForm #validate");
   const imgInput = document.querySelector(".AddImgForm input[name='imgBtn']");
