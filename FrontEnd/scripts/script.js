@@ -16,6 +16,7 @@ export const displayworksData = async () => {
       const divWorksFilters = document.querySelector(".works-filter");
       divWorksFilters.innerHTML = "";
       const btnElement = createElement("button");
+      btnElement.id = "category-actived";
       btnElement.innerText = "Tous";
       divWorksFilters.appendChild(btnElement);
       generateCategories(categories);
@@ -63,6 +64,12 @@ const generateBtn = (worksData) => {
     const element = btnFilter[i];
     element.addEventListener("click", (even) => {
       const accessKey = even.target.accessKey;
+
+      btnFilter.forEach((btn) => {
+        btn.removeAttribute("id");
+      });
+      element.id = "category-actived";
+
       if (accessKey) {
         const worksFilter = worksData.filter((work) => {
           return work.category.id === Number(accessKey);
