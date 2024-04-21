@@ -280,16 +280,31 @@ const deleteWork = async (id) => {
     displayMsgError(error.message, ".validate-container");
   }
 };
+let selectedImage = null;
 
-const manageForm = () => {
+const manageForm = async () => {
+  const { token } = JSON.parse(localStorage.getItem("user"));
   try {
-    const title = documentQuerySelector(".AddImgForm input").value;
-    const select = documentQuerySelector(".AddImgForm select").value;
+    const title = documentQuerySelector(
+      ".AddImgForm input[name='title']"
+    ).value;
+    const categorySelect = document.getElementById("category").value;
+    const img = document.querySelector(".AddImgForm input[name='imgBtn']")
+      .files[0];
+
+    const data = {
+      image: selectedImage,
+      title: title,
+      category: categorySelect,
+    };
+    console.log(data);
+
+    const res = await postWorkFetch(data, token);
+    console.log(res);
   } catch (error) {
     console.log(error);
   }
 };
-
 const onChangeAddForm = () => {
   const btnValidate = documentQuerySelector(".AddImgForm #validate");
   const imgInput = document.querySelector(".AddImgForm input[name='imgBtn']");
@@ -299,6 +314,7 @@ const onChangeAddForm = () => {
   imgInput.addEventListener("change", (event) => {
     try {
       validateImg(event);
+      // console.log("Target", event.target.files[0]);
       isValidInputsElements();
     } catch (error) {
       isErrorInputsElements(error);
@@ -359,6 +375,7 @@ const validateImg = (event) => {
     preview.style.display = "block";
     iconBtnAdd.style.opacity = "0";
 
+    selectedImage = e.target.result;
     const img = document.createElement("img");
     img.src = e.target.result;
     img.alt = file.name;
@@ -387,7 +404,6 @@ function validateForm() {
   if (categorySelect.value === "") {
     throw new Error("Veuillez sélectionner une catégorie");
   }
-  console.log(imgInput.files.length);
   if (!imgInput.files.length) {
     throw new Error("Veuillez sélectionner une une image");
   }
