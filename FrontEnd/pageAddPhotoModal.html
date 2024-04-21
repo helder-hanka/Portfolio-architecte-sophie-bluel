@@ -2,10 +2,11 @@
   <h2>Ajouter photo</h2>
   <form class="AddImgForm" action="#" method="post">
     <div class="add-img-container">
-      <div class="add-img"></div>
-      <div class="icon-btn-add">
+      <div id="preview-img"></div>
+      <div class="icon-btn-add" type="file">
         <i class="fa-regular fa-image"></i>
-        <button>+ Ajouter photo</button>
+        <label for="imgBtn">+ Ajouter photo</label>
+        <input type="file" id="imgBtn" name="imgBtn" accept=".jpeg, .png" />
         <p>jpg, png: 4mo max</p>
       </div>
     </div>
@@ -13,6 +14,7 @@
     <input type="text" name="title" id="title" />
     <label for="category">Catégorie</label>
     <select name="category" id="category">
+      <option value=""></option>
       <option value="1">Objets</option>
       <option value="2">Appartements</option>
       <option value="3">Hotels & restaurants</option>
