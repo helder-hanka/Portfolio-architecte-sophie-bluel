@@ -14,6 +14,7 @@
   height: 169px;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .icon-btn-add {
   display: flex;
@@ -21,11 +22,13 @@
   align-items: center;
   justify-content: center;
 }
-.add-img {
+#preview-img {
   width: 129px;
   display: none;
+  position: absolute;
+  height: 100%;
 }
-.add-img img {
+#preview-img img {
   width: 100%;
   height: 100%;
 }
@@ -34,7 +37,7 @@
   font-size: 60px;
   color: #cbd6dc;
 }
-.icon-btn-add button {
+.icon-btn-add label {
   border: none;
   border-radius: 50px;
   color: #306685;
@@ -84,4 +87,8 @@ select {
   background-repeat: no-repeat;
   background-position: right 15px center;
   background-size: 20px;
+}
+
+.icon-btn-add input {
+  display: none;
 }
