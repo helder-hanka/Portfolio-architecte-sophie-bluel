@@ -291,23 +291,17 @@ let selectedImage = null;
 
 const manageForm = async () => {
   const { token } = JSON.parse(localStorage.getItem("user"));
+  const title = documentQuerySelector(".AddImgForm input[name='title']").value;
+  const categorySelect = document.getElementById("category").value;
+  const img = document.querySelector(".AddImgForm input[name='imgBtn']")
+    .files[0];
+
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("category", categorySelect);
+  formData.append("image", img);
   try {
-    const title = documentQuerySelector(
-      ".AddImgForm input[name='title']"
-    ).value;
-    const categorySelect = document.getElementById("category").value;
-    const img = document.querySelector(".AddImgForm input[name='imgBtn']")
-      .files[0];
-
-    const data = {
-      image: selectedImage,
-      title: title,
-      category: categorySelect,
-    };
-    console.log(data);
-
-    const res = await postWorkFetch(data, token);
-    console.log(res);
+    await postWorkFetch(formData, token);
   } catch (error) {
     console.log(error);
   }
