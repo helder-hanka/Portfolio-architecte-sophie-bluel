@@ -1,0 +1,30 @@
+body {
+  background-color: #fffef8;
+  max-width: 100%;
+}
+body div {
+  max-width: 1140px;
+  margin: auto;
+}
+nav li:nth-child(3) {
+  font-weight: 900;
+}
+#login a {
+  color: black;
+}
+footer {
+  background-color: white;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+main {
+  padding: 150px 0;
+}
+
+.errorMessage {
+  font-size: 20px;
+  color: red;
+}
