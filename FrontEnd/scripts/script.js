@@ -86,10 +86,10 @@ const generateBtn = (worksData) => {
 
 export const createBtnUpdateAddImg = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  if (user && user.userId) {
-    const buttomIconModalContainer = document.getElementById(
-      "buttom-icon-modal-container"
-    );
+  const buttomIconModalContainer = document.getElementById(
+    "buttom-icon-modal-container"
+  );
+  if (buttomIconModalContainer && user && user.userId) {
     const creatBtnModal = createElement("button");
     creatBtnModal.id = "openModal";
     const createI = createElement("i");
