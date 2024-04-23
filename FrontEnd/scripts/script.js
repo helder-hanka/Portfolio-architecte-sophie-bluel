@@ -301,9 +301,10 @@ const manageForm = async () => {
   formData.append("category", categorySelect);
   formData.append("image", img);
   try {
-    await postWorkFetch(formData, token);
+    const res = await postWorkFetch(formData, token);
+    messageError(res);
   } catch (error) {
-    console.log(error);
+    displayMsgError(error.message, ".validate-container");
   }
 };
 const onChangeAddForm = () => {
