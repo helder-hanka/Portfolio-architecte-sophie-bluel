@@ -315,7 +315,6 @@ const onChangeAddForm = () => {
   imgInput.addEventListener("change", (event) => {
     try {
       validateImg(event);
-      // console.log("Target", event.target.files[0]);
       isValidInputsElements();
     } catch (error) {
       isErrorInputsElements(error);
