@@ -266,8 +266,10 @@ const displayMsgError = (msg, selector) => {
   let existingErrorMsg = document.querySelector(".errorMessage");
   if (!existingErrorMsg) {
     existingErrorMsg = createElement("span");
+    const brElement = createElement("br");
     existingErrorMsg.classList = "errorMessage";
     existingErrorMsg.innerText = msg;
+    classLoginForm.appendChild(brElement);
     classLoginForm.appendChild(existingErrorMsg);
     return classLoginForm;
   }
@@ -364,7 +366,6 @@ const onChangeAddForm = () => {
 const validateImg = (event) => {
   let imgElement = documentQuerySelector("#preview-img img");
   const file = event.target.files[0];
-  console.log(file);
   const imageType = ["image/jpeg", "image/png"];
   if (!imageType.some((imgT) => imgT === file.type)) {
     throw new Error(`${file.type}: n'est pas valide`);
