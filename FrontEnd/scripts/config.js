@@ -42,6 +42,6 @@ export const postWorkFetch = async (bodyData, token) => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(bodyData),
+    body: bodyData,
   });
 };
