@@ -154,6 +154,8 @@ const displayErrorMessage = (msg) => {
   existingErrorMsg.innerText = msg;
 };
 
+let isWorkDelete = false;
+
 export const displayModal = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const btnModal = document.getElementById("openModal");
@@ -208,6 +210,7 @@ export const displayModal = () => {
       modal.innerHTML = "";
       modal.style.display = "none";
       body.style.overflow = "";
+      isWorkDelete && window.location.reload();
     };
     if (btnModal) {
       btnModal.addEventListener("click", openModal);
@@ -278,6 +281,7 @@ const deleteWork = async (id) => {
     const res = await deleteWorkFetch(id, token);
     messageError(res);
     displayMsgError("", ".validate-container");
+    isWorkDelete = true;
     alert("Photo supprimé");
     imgContainer.innerHTML = "";
     displayModalContents();
