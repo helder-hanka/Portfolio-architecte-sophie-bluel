@@ -364,7 +364,6 @@ const onChangeAddForm = () => {
 const validateImg = (event) => {
   let imgElement = documentQuerySelector("#preview-img img");
   const file = event.target.files[0];
-  console.log(file);
   const imageType = ["image/jpeg", "image/png"];
   if (!imageType.some((imgT) => imgT === file.type)) {
     throw new Error(`${file.type}: n'est pas valide`);
