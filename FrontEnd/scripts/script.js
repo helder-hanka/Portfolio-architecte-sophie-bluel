@@ -266,8 +266,10 @@ const displayMsgError = (msg, selector) => {
   let existingErrorMsg = document.querySelector(".errorMessage");
   if (!existingErrorMsg) {
     existingErrorMsg = createElement("span");
+    const brElement = createElement("br");
     existingErrorMsg.classList = "errorMessage";
     existingErrorMsg.innerText = msg;
+    classLoginForm.appendChild(brElement);
     classLoginForm.appendChild(existingErrorMsg);
     return classLoginForm;
   }
