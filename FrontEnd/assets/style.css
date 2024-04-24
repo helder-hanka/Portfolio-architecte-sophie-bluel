@@ -322,10 +322,7 @@ a {
 .img-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  padding: 3px 1px;
-  font-size: 9px;
   row-gap: 29px;
 }
 .img-container button {
@@ -443,4 +440,10 @@ a {
 .errorMessage {
   color: red;
   font-size: 16px;
+}
+
+.photo-gallery {
+  text-align: center;
+  max-height: 435px;
+  overflow-y: auto;
 }
