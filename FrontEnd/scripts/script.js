@@ -110,14 +110,12 @@ export const callLoginform = () => {
       try {
         validateEmail(email);
         const res = await loginFetch(email, password);
-        console.log(res);
         messageError(res);
         const result = await res.json();
         displayErrorMessage("");
         localStorage.setItem("user", JSON.stringify(result));
         window.location.href = "./index.html";
       } catch (error) {
-        console.log("Err::: ", error);
         displayErrorMessage(error.message);
       }
     });
@@ -303,6 +301,7 @@ const manageForm = async () => {
   try {
     const res = await postWorkFetch(formData, token);
     messageError(res);
+    alert(`Projet ${res.statusText}`);
   } catch (error) {
     displayMsgError(error.message, ".validate-container");
   }
