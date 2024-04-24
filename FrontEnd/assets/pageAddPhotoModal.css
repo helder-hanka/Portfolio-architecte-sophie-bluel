@@ -74,6 +74,7 @@ select {
 #validate {
   background-color: #a7a7a7;
   padding: 10px 100px;
+  margin-bottom: 10px;
 }
 .AddImgForm .validate-container {
   text-align: center;

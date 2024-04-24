@@ -266,8 +266,10 @@ const displayMsgError = (msg, selector) => {
   let existingErrorMsg = document.querySelector(".errorMessage");
   if (!existingErrorMsg) {
     existingErrorMsg = createElement("span");
+    const brElement = createElement("br");
     existingErrorMsg.classList = "errorMessage";
     existingErrorMsg.innerText = msg;
+    classLoginForm.appendChild(brElement);
     classLoginForm.appendChild(existingErrorMsg);
     return classLoginForm;
   }
@@ -289,7 +291,6 @@ const deleteWork = async (id) => {
     displayMsgError(error.message, ".validate-container");
   }
 };
-let selectedImage = null;
 
 const manageForm = async () => {
   const { token } = JSON.parse(localStorage.getItem("user"));
@@ -363,6 +364,7 @@ const onChangeAddForm = () => {
 };
 
 const validateImg = (event) => {
+  let imgElement = documentQuerySelector("#preview-img img");
   const file = event.target.files[0];
   const imageType = ["image/jpeg", "image/png"];
   if (!imageType.some((imgT) => imgT === file.type)) {
@@ -379,11 +381,15 @@ const validateImg = (event) => {
     preview.style.display = "block";
     iconBtnAdd.style.opacity = "0";
 
-    selectedImage = e.target.result;
-    const img = document.createElement("img");
-    img.src = e.target.result;
-    img.alt = file.name;
-    preview.appendChild(img);
+    if (imgElement) {
+      imgElement.src = "";
+      imgElement.alt = "";
+    } else {
+      imgElement = document.createElement("img");
+    }
+    imgElement.src = e.target.result;
+    imgElement.alt = file.name;
+    preview.appendChild(imgElement);
   };
   reader.readAsDataURL(file);
 };
