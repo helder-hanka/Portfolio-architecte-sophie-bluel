@@ -200,7 +200,7 @@ export const displayModal = () => {
           onChangeAddForm();
 
           const form = documentQuerySelector(".AddImgForm");
-          form.addEventListener("submit", (event) => {
+          form.addEventListener("submit", async (event) => {
             event.preventDefault();
             manageForm();
           });
@@ -305,6 +305,7 @@ const manageForm = async () => {
   formData.append("image", img);
   try {
     const res = await postWorkFetch(formData, token);
+    console.log("RES :", res);
     messageError(res);
     alert(`Projet ${res.statusText}`);
   } catch (error) {
