@@ -5,4 +5,5 @@
     "editor.defaultFormatter": "vscode.html-language-features" //mise en place pour html
   },
   "editor.detectIndentation": false
+  //   "livePreview.defaultPreviewPath": "/FrontEnd/index.html"
 }

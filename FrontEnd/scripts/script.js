@@ -7,26 +7,37 @@ import {
 } from "./config.js";
 
 export const displayworksData = async () => {
+  const divGallery = document.querySelector(".gallery");
+  const worksFilter = document.querySelector(".works-filter");
   try {
     const worksData = await worksFetch();
+    const newWorkData = await worksData.json();
+    messageError(worksData);
     const categories = await categoriesFetch();
-    if (worksData && categories) {
-      document.querySelector(".gallery").innerHTML = "";
-      generateworks(worksData);
+    messageError(categories);
+
+    if (divGallery && worksData.ok && categories.ok) {
+      divGallery.innerHTML = "";
+      worksFilter.innerHTML = "";
+      generateworks(newWorkData);
       const divWorksFilters = document.querySelector(".works-filter");
-      divWorksFilters.innerHTML = "";
-      const btnElement = createElement("button");
-      btnElement.id = "category-actived";
-      btnElement.innerText = "Tous";
-      divWorksFilters.appendChild(btnElement);
-      generateCategories(categories);
-      generateBtn(worksData);
+      divWorksFilters.appendChild(
+        createBtn("button", "category-actived", "Tous")
+      );
+      generateCategories(await categories.json());
+      generateBtn(newWorkData);
     }
   } catch (error) {
-    console.log(error);
+    displayMsgError(error.message, ".gallery");
   }
 };
 
+const createBtn = (name, id, value) => {
+  const btnElement = createElement(name);
+  btnElement.id = id;
+  btnElement.innerText = value;
+  return btnElement;
+};
 const generateworks = (elementsArr) => {
   for (let i = 0, r = elementsArr.length; i < r; i++) {
     const element = elementsArr[i];
@@ -200,7 +211,7 @@ export const displayModal = () => {
           onChangeAddForm();
 
           const form = documentQuerySelector(".AddImgForm");
-          form.addEventListener("submit", (event) => {
+          form.addEventListener("submit", async (event) => {
             event.preventDefault();
             manageForm();
           });
@@ -236,9 +247,10 @@ const createElement = (element) => {
 const displayModalContents = async () => {
   try {
     const dataWorks = await worksFetch();
+    const newDataWorks = await dataWorks.json();
     const imgContainer = documentQuerySelector(".img-container");
-    for (let i = 0, arrl = dataWorks.length; i < arrl; i++) {
-      const element = dataWorks[i];
+    for (let i = 0, arrl = newDataWorks.length; i < arrl; i++) {
+      const element = newDataWorks[i];
 
       const figureModal = createElement("figure");
       const imgeModal = createElement("img");
@@ -294,19 +306,26 @@ const deleteWork = async (id) => {
 
 const manageForm = async () => {
   const { token } = JSON.parse(localStorage.getItem("user"));
-  const title = documentQuerySelector(".AddImgForm input[name='title']").value;
-  const categorySelect = document.getElementById("category").value;
-  const img = document.querySelector(".AddImgForm input[name='imgBtn']")
-    .files[0];
+  let title = documentQuerySelector(".AddImgForm input[name='title']");
+  let categorySelect = document.getElementById("category");
+  let img = document.querySelector(".AddImgForm input[name='imgBtn']");
 
   const formData = new FormData();
-  formData.append("title", title);
-  formData.append("category", categorySelect);
-  formData.append("image", img);
+  formData.append("title", title.value);
+  formData.append("category", categorySelect.value);
+  formData.append("image", img.files[0]);
   try {
     const res = await postWorkFetch(formData, token);
     messageError(res);
     alert(`Projet ${res.statusText}`);
+
+    title.value = "";
+    categorySelect.value = "";
+    img.value = "";
+
+    displayIconBtnAddPhotoModal();
+    hidePreviewImgPhotoModal();
+    displayworksData();
   } catch (error) {
     displayMsgError(error.message, ".validate-container");
   }
@@ -420,3 +439,18 @@ function validateForm() {
 
   return true;
 }
+
+const displayIconBtnAddPhotoModal = () => {
+  const iconBtnAdd = document.querySelector(".icon-btn-add");
+  document.querySelector(".icon-btn-add i").style.display = "block";
+  document.querySelector(".icon-btn-add p").style.display = "block";
+  document.querySelector(".icon-btn-add label").style.height = "auto";
+  iconBtnAdd.style.opacity = "1";
+};
+
+const hidePreviewImgPhotoModal = () => {
+  let imgElement = documentQuerySelector("#preview-img img");
+  const preview = document.getElementById("preview-img");
+  imgElement.src = "";
+  preview.style.display = "none";
+};
