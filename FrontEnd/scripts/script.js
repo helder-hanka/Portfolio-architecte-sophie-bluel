@@ -200,7 +200,7 @@ export const displayModal = () => {
           onChangeAddForm();
 
           const form = documentQuerySelector(".AddImgForm");
-          form.addEventListener("submit", (event) => {
+          form.addEventListener("submit", async (event) => {
             event.preventDefault();
             manageForm();
           });
@@ -294,19 +294,26 @@ const deleteWork = async (id) => {
 
 const manageForm = async () => {
   const { token } = JSON.parse(localStorage.getItem("user"));
-  const title = documentQuerySelector(".AddImgForm input[name='title']").value;
-  const categorySelect = document.getElementById("category").value;
-  const img = document.querySelector(".AddImgForm input[name='imgBtn']")
-    .files[0];
+  let title = documentQuerySelector(".AddImgForm input[name='title']");
+  let categorySelect = document.getElementById("category");
+  let img = document.querySelector(".AddImgForm input[name='imgBtn']");
 
   const formData = new FormData();
-  formData.append("title", title);
-  formData.append("category", categorySelect);
-  formData.append("image", img);
+  formData.append("title", title.value);
+  formData.append("category", categorySelect.value);
+  formData.append("image", img.files[0]);
   try {
     const res = await postWorkFetch(formData, token);
     messageError(res);
     alert(`Projet ${res.statusText}`);
+
+    title.value = "";
+    categorySelect.value = "";
+    img.value = "";
+
+    displayIconBtnAddPhotoModal();
+    hidePreviewImgPhotoModal();
+    displayworksData();
   } catch (error) {
     displayMsgError(error.message, ".validate-container");
   }
@@ -420,3 +427,18 @@ function validateForm() {
 
   return true;
 }
+
+const displayIconBtnAddPhotoModal = () => {
+  const iconBtnAdd = document.querySelector(".icon-btn-add");
+  document.querySelector(".icon-btn-add i").style.display = "block";
+  document.querySelector(".icon-btn-add p").style.display = "block";
+  document.querySelector(".icon-btn-add label").style.height = "auto";
+  iconBtnAdd.style.opacity = "1";
+};
+
+const hidePreviewImgPhotoModal = () => {
+  let imgElement = documentQuerySelector("#preview-img img");
+  const preview = document.getElementById("preview-img");
+  imgElement.src = "";
+  preview.style.display = "none";
+};
