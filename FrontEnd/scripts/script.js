@@ -7,20 +7,28 @@ import {
 } from "./config.js";
 
 export const displayworksData = async () => {
+  const divGallery = document.querySelector(".gallery");
+  const worksFilter = document.querySelector(".works-filter");
   try {
     const worksData = await worksFetch();
+    const newWorkData = await worksData.json();
+    messageError(worksData);
     const categories = await categoriesFetch();
-    if (worksData && categories) {
-      generateworks(worksData);
+    messageError(categories);
+
+    if (divGallery && worksData.ok && categories.ok) {
+      divGallery.innerHTML = "";
+      worksFilter.innerHTML = "";
+      generateworks(newWorkData);
       const divWorksFilters = document.querySelector(".works-filter");
       divWorksFilters.appendChild(
         createBtn("button", "category-actived", "Tous")
       );
-      generateCategories(categories);
-      generateBtn(worksData);
+      generateCategories(await categories.json());
+      generateBtn(newWorkData);
     }
   } catch (error) {
-    console.log(error);
+    displayMsgError(error.message, ".gallery");
   }
 };
 
@@ -239,9 +247,10 @@ const createElement = (element) => {
 const displayModalContents = async () => {
   try {
     const dataWorks = await worksFetch();
+    const newDataWorks = await dataWorks.json();
     const imgContainer = documentQuerySelector(".img-container");
-    for (let i = 0, arrl = dataWorks.length; i < arrl; i++) {
-      const element = dataWorks[i];
+    for (let i = 0, arrl = newDataWorks.length; i < arrl; i++) {
+      const element = newDataWorks[i];
 
       const figureModal = createElement("figure");
       const imgeModal = createElement("img");
