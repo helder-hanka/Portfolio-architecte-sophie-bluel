@@ -308,6 +308,7 @@ const manageForm = async () => {
     console.log("RES :", res);
     messageError(res);
     alert(`Projet ${res.statusText}`);
+    displayworksData();
   } catch (error) {
     displayMsgError(error.message, ".validate-container");
   }
