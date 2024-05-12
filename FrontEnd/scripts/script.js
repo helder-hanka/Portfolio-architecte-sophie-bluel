@@ -13,10 +13,9 @@ export const displayworksData = async () => {
     if (worksData && categories) {
       generateworks(worksData);
       const divWorksFilters = document.querySelector(".works-filter");
-      const btnElement = createElement("button");
-      btnElement.id = "category-actived";
-      btnElement.innerText = "Tous";
-      divWorksFilters.appendChild(btnElement);
+      divWorksFilters.appendChild(
+        createBtn("button", "category-actived", "Tous")
+      );
       generateCategories(categories);
       generateBtn(worksData);
     }
@@ -25,6 +24,12 @@ export const displayworksData = async () => {
   }
 };
 
+const createBtn = (name, id, value) => {
+  const btnElement = createElement(name);
+  btnElement.id = id;
+  btnElement.innerText = value;
+  return btnElement;
+};
 const generateworks = (elementsArr) => {
   for (let i = 0, r = elementsArr.length; i < r; i++) {
     const element = elementsArr[i];
