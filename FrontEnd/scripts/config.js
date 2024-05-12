@@ -1,7 +1,6 @@
 export const worksFetch = async () => {
   try {
-    const res = await fetch("http://localhost:5678/api/works");
-    return await res.json();
+    return await fetch("http://localhost:5678/api/works");
   } catch (error) {
     return console.log(error);
   }
@@ -9,8 +8,7 @@ export const worksFetch = async () => {
 
 export const categoriesFetch = async () => {
   try {
-    const res = await fetch("http://localhost:5678/api/categories");
-    return await res.json();
+    return await fetch("http://localhost:5678/api/categories");
   } catch (error) {
     return console.log(error);
   }
