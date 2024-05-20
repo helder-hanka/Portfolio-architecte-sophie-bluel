@@ -108,6 +108,7 @@ export const createBtnUpdateAddImg = () => {
     const createI = createElement("i");
     createI.classList = "fa-regular fa-pen-to-square";
     creatBtnModal.innerText = "modifier";
+    buttomIconModalContainer.style.display = "block";
     buttomIconModalContainer.insertAdjacentElement("beforeend", createI);
     buttomIconModalContainer.appendChild(creatBtnModal);
   }
