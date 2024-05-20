@@ -26,6 +26,8 @@ export const displayworksData = async () => {
       );
       generateCategories(await categories.json());
       generateBtn(newWorkData);
+      logout();
+      verifyConnection();
     }
   } catch (error) {
     displayMsgError(error.message, ".gallery");
@@ -131,6 +133,38 @@ export const callLoginform = () => {
       }
     });
   }
+};
+const logout = () => {
+  const btnLogout = document.querySelector(".btn-logout");
+  btnLogout.addEventListener("click", function () {
+    clearLocalStorage();
+  });
+};
+const displayHidBtnLoginLogout = (btnLoginDisplay, btnLogoutDisplay) => {
+  const btnLogin = document.querySelector(".login");
+  const btnLogout = document.querySelector(".logout");
+  btnLogin.style.display = btnLoginDisplay;
+  btnLogout.style.display = btnLogoutDisplay;
+};
+const clearLocalStorage = () => {
+  localStorage.clear("user");
+  window.location.href = "index.html";
+};
+
+const getLocalStorage = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return (
+    user && {
+      userId: user.userId,
+      token: user.token,
+    }
+  );
+};
+const verifyConnection = () => {
+  const userIdToken = getLocalStorage();
+  userIdToken
+    ? displayHidBtnLoginLogout("none", "block")
+    : displayHidBtnLoginLogout("block", "none");
 };
 
 const messageError = (res) => {
