@@ -124,7 +124,7 @@ export const callLoginform = () => {
       try {
         validateEmail(email);
         const res = await loginFetch(email, password);
-        messageError(res);
+        messageError(res, true);
         const result = await res.json();
         displayErrorMessage("");
         localStorage.setItem("user", JSON.stringify(result));
@@ -168,13 +168,14 @@ const verifyConnection = () => {
     : displayHidBtnLoginLogout("block", "none");
 };
 
-const messageError = (res) => {
+const messageError = (res, isLoogin) => {
   if (!res.ok) {
     if (res.status === 401) {
       localStorage.clear("user");
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 3000);
+      !isLoogin &&
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 3000);
     }
     throw new Error(res.statusText);
   }
