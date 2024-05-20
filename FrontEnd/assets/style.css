@@ -178,12 +178,14 @@ nav li {
   padding: 0 10px;
   font-size: 1.2em;
 }
+.logout {
+  display: none;
+}
 
 a:hover,
 li:hover,
 .btn-logout:hover,
-#buttom-icon-modal-container:hover,
-#openModal:hover {
+#buttom-icon-modal-container:hover * {
   color: #b1663c;
 }
 #introduction {
