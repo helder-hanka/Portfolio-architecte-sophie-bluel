@@ -87,7 +87,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+.btn-logout {
   margin: 0;
   padding: 0;
   border: 0;
@@ -179,7 +180,8 @@ nav li {
 }
 
 a:hover,
-li:hover {
+li:hover,
+.btn-logout:hover {
   color: #b1663c;
 }
 #introduction {
@@ -308,6 +310,9 @@ a {
   align-items: center;
   gap: 31px;
   font-size: 16px;
+}
+.btn-logout {
+  background-color: white;
 }
 /** Modal**/
 
