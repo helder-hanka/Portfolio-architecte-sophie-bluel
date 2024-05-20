@@ -181,7 +181,9 @@ nav li {
 
 a:hover,
 li:hover,
-.btn-logout:hover {
+.btn-logout:hover,
+#buttom-icon-modal-container:hover,
+#openModal:hover {
   color: #b1663c;
 }
 #introduction {
@@ -416,8 +418,14 @@ a {
   background-color: white;
   font-size: 14px;
 }
-#openModal i {
-  padding-right: 10px;
+#openModal,
+.fa-regular,
+header nav ul {
+  cursor: pointer;
+}
+
+#buttom-icon-modal-container {
+  display: none;
 }
 /* Add Animation */
 @-webkit-keyframes animatetop {
